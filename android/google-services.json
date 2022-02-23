@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "752238538829",
+    "project_id": "appmasbek",
+    "storage_bucket": "appmasbek.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752238538829:android:a0fbaf4be0d7a286e9ac04",
+        "android_client_info": {
+          "package_name": "com.example.appmasbek.appmasbek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752238538829-c6e4kcbmj3udb14n6f99g7lufm8jpg5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtxP8yHb6_EKDJRLBJdH8R7nE9UN89FoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752238538829-c6e4kcbmj3udb14n6f99g7lufm8jpg5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
