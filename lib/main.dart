@@ -51,7 +51,7 @@ class Sidebar extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => const MySecondScreen()),
                 );
               },
             ),
@@ -85,26 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-      if(_counter %2 == 0) _status = "Genap: ";
-      else _status = "Ganjil: ";
-      for(int i=0; i<=_counter; i++) {
-        if(i%2 == 0){
-          if (i%3 == 0) _status += '${i}, ';
-        }
-      }
-    });
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: const Center(
@@ -113,11 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
         ),
         drawer: Sidebar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.stars),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
@@ -130,16 +109,16 @@ class MyFirstScreen extends StatefulWidget {
 }
 
 class FirstScreen extends State<MyFirstScreen> {
-  int counter = 0;
-  String status = "";
+  int _counter = 0;
+  String _status = "";
   void incrementCounter() {
     setState(() {
-      counter++;
-      if(counter %2 == 0) status = "Genap: ";
-      else status = "Ganjil: ";
-      for(int i=0; i<=counter; i++) {
+      _counter++;
+      if(_counter %2 == 0) {_status = "Genap: ";}
+      else {_status = "Ganjil: ";}
+      for(int i=0; i<=_counter; i++) {
         if(i%2 == 0){
-          if (i%3 == 0) status += '${i}, ';
+          if (i%3 == 0) _status += '$i, ';
         }
       }
     });
@@ -148,8 +127,6 @@ class FirstScreen extends State<MyFirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text('Menampilkan bilangan genap kelipatan 3'),
       ),
       body: Center(
@@ -159,11 +136,11 @@ class FirstScreen extends State<MyFirstScreen> {
                 const Text(
                   'u click btn many times: ',
                   ),
-                  Text('${counter}',
+                  Text('$_counter',
                   style: Theme.of(context).textTheme.headline4,
                   
                   ),
-                  Text(status,
+                  Text(_status,
                   style: Theme.of(context).textTheme.headline6,
                   ),
               ],
@@ -179,24 +156,59 @@ class FirstScreen extends State<MyFirstScreen> {
   }
 }
 
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+class MySecondScreen extends StatefulWidget {
+  const MySecondScreen({Key? key}) : super(key: key);
+  @override
+  State<MySecondScreen> createState() => SecondScreen();
+}
 
+class SecondScreen extends State<MySecondScreen> {
+
+  int _counter = 0;
+  String _status = "";
+  void incrementCounter() {
+    setState(() {
+      _counter++;
+      if(_counter %2 == 0) {_status = "Genap: ";}
+      else {_status = "Ganjil: ";}
+      for(int i=1; i<=_counter; i++) {
+        int _flag =0;
+        for(int j=1; j<=i; j++){
+          if(i%j == 0) _flag++;
+        }
+        if(_flag == 2) _status += '$i, ';
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Second Route'),
+        title: const Text('Menampilkan bilangan prima'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
+         child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'u click btn many times: ',
+                  ),
+                  Text('$_counter',
+                  style: Theme.of(context).textTheme.headline4,
+                  
+                  ),
+                  Text(_status,
+                  style: Theme.of(context).textTheme.headline6,
+                  ),
+              ],
+            ),
         ),
-      ),
-      drawer: Sidebar(),
+        drawer: Sidebar(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.stars),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
