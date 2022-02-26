@@ -11,12 +11,53 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Hello world2",
+      title: "App Masbek",
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
       home: const MyHomePage(title: 'Hello world by masbek'),
+      
     );
+  }
+}
+
+class Sidebar extends StatelessWidget {
+  // Sidebar obj = new Sidebar();
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.yellow,
+              ),
+              child: Text('Mohammad Subkhan'),
+              // style: Theme.of(context).textTheme.headline4,
+            ),
+            ListTile(
+              title: const Text('Latihan'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyFirstScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Tugas'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                );
+              },
+            ),
+          ],
+        ),
+      );
   }
 }
 
@@ -71,38 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'Hello world! You have clicked the button this many times:',
             ),
         ),
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Drawer Header'),
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const FirstScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+        drawer: Sidebar(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -112,26 +122,59 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({Key? key}) : super(key: key);
 
+class MyFirstScreen extends StatefulWidget {
+  const MyFirstScreen({Key? key}) : super(key: key);
+  @override
+  State<MyFirstScreen> createState() => FirstScreen();
+}
+
+class FirstScreen extends State<MyFirstScreen> {
+  int counter = 0;
+  String status = "";
+  void incrementCounter() {
+    setState(() {
+      counter++;
+      if(counter %2 == 0) status = "Genap: ";
+      else status = "Ganjil: ";
+      for(int i=0; i<=counter; i++) {
+        if(i%2 == 0){
+          if (i%3 == 0) status += '${i}, ';
+        }
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('First Route'),
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text('Menampilkan bilangan genap kelipatan 3'),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: const Text('Open route'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SecondScreen()),
-            );
-          },
+         child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'u click btn many times: ',
+                  ),
+                  Text('${counter}',
+                  style: Theme.of(context).textTheme.headline4,
+                  
+                  ),
+                  Text(status,
+                  style: Theme.of(context).textTheme.headline6,
+                  ),
+              ],
+            ),
         ),
-      ),
+        drawer: Sidebar(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.stars),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
@@ -153,6 +196,7 @@ class SecondScreen extends StatelessWidget {
           child: const Text('Go back!'),
         ),
       ),
+      drawer: Sidebar(),
     );
   }
 }
