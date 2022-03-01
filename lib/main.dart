@@ -33,9 +33,14 @@ class Sidebar extends StatelessWidget {
             const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.yellow,
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage('https://demo.getstisla.com/assets/img/news/img08.jpg'),
+                ),
               ),
-              child: Text('Mohammad Subkhan'),
-              // style: Theme.of(context).textTheme.headline4,
+              child: Text('Mohammad Subkhan',
+                style: TextStyle(color: Colors.black, fontSize: 30),
+              ),
             ),
             ListTile(
               title: const Text('Latihan'),
@@ -69,21 +74,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String _status = "";
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-      if(_counter %2 == 0) _status = "Genap: ";
-      else _status = "Ganjil: ";
-      for(int i=0; i<=_counter; i++) {
-        if(i%2 == 0){
-          if (i%3 == 0) _status += '${i}, ';
-        }
-      }
-    });
-  }
+  // int _counter = 0;
+  // String _status = "";
+  //
+  // void _incrementCounter() {
+  //   setState(() {
+  //     _counter++;
+  //     if(_counter %2 == 0) _status = "Genap: ";
+  //     else _status = "Ganjil: ";
+  //     for(int i=0; i<=_counter; i++) {
+  //       if(i%2 == 0){
+  //         if (i%3 == 0) _status += '${i}, ';
+  //       }
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: const Center(
          child: Text(
-              'Hello world! You have clicked the button this many times:',
+              'Hello world!',
             ),
         ),
         drawer: Sidebar(),
@@ -127,7 +132,7 @@ class FirstScreen extends State<MyFirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menampilkan bilangan genap kelipatan 3'),
+        title: const Text('Menampilkan bilangan genap kelipatan 3'),
       ),
       body: Center(
          child: Column(
