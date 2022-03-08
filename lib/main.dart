@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:appmasbek/flutter_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,7 @@ class Sidebar extends StatelessWidget {
                 color: Colors.yellow,
                 image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage('https://demo.getstisla.com/assets/img/news/img08.jpg'),
+                  image: AssetImage('assets/images/img08.jpg'),
                 ),
               ),
               child: Text('Mohammad Subkhan',
@@ -57,6 +58,15 @@ class Sidebar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const MySecondScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Flutter Layout'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DetailScreen()),
                 );
               },
             ),
@@ -148,6 +158,21 @@ class FirstScreen extends State<MyFirstScreen> {
                   Text(_status,
                   style: Theme.of(context).textTheme.headline6,
                   ),
+                  ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Go Back!'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MyApp()),
+                    );
+                  },
+                  child: const Text('Home!'),
+                ),
               ],
             ),
         ),
@@ -205,6 +230,21 @@ class SecondScreen extends State<MySecondScreen> {
                   Text(_status,
                   style: Theme.of(context).textTheme.headline6,
                   ),
+                   ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Go Back!'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MyApp()),
+                    );
+                  },
+                  child: const Text('Home!'),
+                ),
               ],
             ),
         ),
@@ -217,5 +257,77 @@ class SecondScreen extends State<MySecondScreen> {
     );
   }
 }
+
+// class MyThirdScreen extends StatefulWidget {
+//   const MyThirdScreen({Key? key}) : super(key: key);
+//   @override
+//   State<MyThirdScreen> createState() => ThirdScreen();
+// }
+
+// class ThirdScreen extends State<MyThirdScreen> {
+
+//   int _counter = 0;
+//   String _status = "";
+//   void incrementCounter() {
+//     setState(() {
+//       _counter++;
+//       if(_counter %2 == 0) {_status = "Genap: ";}
+//       else {_status = "Ganjil: ";}
+//       for(int i=1; i<=_counter; i++) {
+//         int _flag =0;
+//         for(int j=1; j<=i; j++){
+//           if(i%j == 0) _flag++;
+//         }
+//         if(_flag == 2) _status += '$i, ';
+//       }
+//     });
+//   }
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Menampilkan bilangan prima'),
+//       ),
+//       body: Center(
+//          child: Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: <Widget>[
+//                 const Text(
+//                   'u click btn many times: ',
+//                   ),
+//                   Text('$_counter',
+//                   style: Theme.of(context).textTheme.headline4,
+                  
+//                   ),
+//                   Text(_status,
+//                   style: Theme.of(context).textTheme.headline6,
+//                   ),
+//                    ElevatedButton(
+//                   onPressed: () {
+//                     Navigator.pop(context);
+//                   },
+//                   child: const Text('Go Back!'),
+//                 ),
+//                 ElevatedButton(
+//                   onPressed: () {
+//                     Navigator.push(
+//                       context,
+//                       MaterialPageRoute(builder: (context) => const MyApp()),
+//                     );
+//                   },
+//                   child: const Text('Home!'),
+//                 ),
+//               ],
+//             ),
+//         ),
+//         drawer: Sidebar(),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: incrementCounter,
+//         tooltip: 'Increment',
+//         child: const Icon(Icons.stars),
+//       ), // This trailing comma makes auto-formatting nicer for build methods.
+//     );
+//   }
+// }
 
 

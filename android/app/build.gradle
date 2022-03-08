@@ -25,7 +25,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 // Add the following line:
-apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+//apply plugin: 'com.google.gms.google-services'  // Google Services plugin
 android {
     compileSdkVersion flutter.compileSdkVersion
 
