@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:appmasbek/flutter_layout.dart';
-
+import 'package:appmasbek/main_screen.dart';
+import 'package:appmasbek/model/tourism_place.dart';
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  
 
   // This widget is the root of your application.
   @override
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
 
 class Sidebar extends StatelessWidget {
   // Sidebar obj = new Sidebar();
+  late TourismPlace place;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -66,7 +69,16 @@ class Sidebar extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const DetailScreen()),
+                  MaterialPageRoute(builder: (context) => DetailScreen(place: place)),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Flutter Layout2'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen()),
                 );
               },
             ),
