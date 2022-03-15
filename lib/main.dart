@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       home: const MyHomePage(title: 'Hello world by masbek'),
+      // home: DetailScreen(place: place),
       
     );
   }
@@ -64,21 +65,21 @@ class Sidebar extends StatelessWidget {
                 );
               },
             ),
+            // ListTile(
+            //   title: const Text('Flutter Layout'),
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => DetailScreen(place: place)),
+            //     );
+            //   },
+            // ),
             ListTile(
               title: const Text('Flutter Layout'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailScreen(place: place)),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Flutter Layout2'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MainScreen()),
+                  MaterialPageRoute(builder: (context) => const MainScreen()),
                 );
               },
             ),

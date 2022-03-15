@@ -1,11 +1,10 @@
 import 'package:appmasbek/flutter_layout.dart';
+import 'package:appmasbek/main.dart';
 import 'package:appmasbek/model/tourism_place.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatelessWidget{
-  var tourismPlaceList;
-  MainScreen({Key? key}) : super(key: key);
-  late TourismPlace place;
+  const MainScreen({Key? key}) : super(key: key);
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -13,22 +12,23 @@ class MainScreen extends StatelessWidget{
       ),
       body: ListView.builder(
         itemBuilder: (context, index){
-          final TourismPlace place = tourismPlaceList[index];
+          final TourismPlace place = data[index];
           return InkWell(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return DetailScreen(place: place);
               }));
             },
-            child: listItem(),
+            child: listItem(place),
           );
         },
-        )
-      
+        itemCount: data.length,
+        ),
+      drawer: Sidebar(),
     );
   }
 
-  Widget listItem(){
+  Widget listItem(TourismPlace place){
     return Card(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +46,7 @@ class MainScreen extends StatelessWidget{
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(place.name,
-                  style: TextStyle(fontSize: 16.0)
+                  style: const TextStyle(fontSize: 16.0)
                   ),
                   const SizedBox(
                     height: 10,
