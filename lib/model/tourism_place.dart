@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
+
 class TourismPlace{
   String name, location, imageAsset, desc, day, time, price;
-  var gallery = [];
+  var gallery = [], fitur = [];
+  // Icon icons = [Icon(Icons.calendar_today_rounded), Icon(Icons.query_builder_rounded), Icon(Icons.monetization_on_outlined)];
 
   TourismPlace({
     required this.name,
@@ -10,7 +13,9 @@ class TourismPlace{
     required this.day,
     required this.time,
     required this.price,
-    required this.gallery
+    required this.gallery,
+    required this.fitur,
+    // required this.icons
   });
 }
  var data = [
@@ -29,7 +34,9 @@ class TourismPlace{
       day: "Everyday",
       time: "08.00 - 16.00",
       price: "IDR 50.000",
-      gallery: ['assets/images/img08.jpg', 'assets/images/img07.jpg', 'assets/images/img05.jpg', 'assets/images/img08.jpg']
+      gallery: ['https://demo.getstisla.com/assets/img/news/img04.jpg', 'https://demo.getstisla.com/assets/img/news/img05.jpg', 'https://demo.getstisla.com/assets/img/news/img08.jpg', 'https://demo.getstisla.com/assets/img/news/img06.jpg'],
+      fitur: ['android', 'ios'],
+      // icons: ['Icons.calendar_today_rounded', 'Icons.query_builder_rounded', 'Icons.monetization_on_outlined']
     ),
     TourismPlace(name: "Sby submarine2", location: "jl pemuda12", imageAsset: "assets/images/img08.jpg",
           desc: """
@@ -43,6 +50,8 @@ class TourismPlace{
           ,day: "Every Friday",
           time: "09.00 - 19.00",
           price: "IDR 20.000",
-          gallery: ['assets/images/img07.jpg', 'assets/images/img05.jpg', 'assets/images/img05.jpg']
+          gallery: ['https://d17ivq9b7rppb3.cloudfront.net/original/academy/belajar_prinsip_pemrograman_solid_logo_230421132206.jpg', 'https://demo.getstisla.com/assets/img/news/img05.jpg', 'https://demo.getstisla.com/assets/img/news/img08.jpg', 'https://demo.getstisla.com/assets/img/news/img06.jpg']
+          ,fitur: ['android', 'Mac'],
+          // icons: ['Icons.calendar_today_rounded', 'Icons.query_builder_rounded', 'Icons.monetization_on_outlined']
     ),
   ];
