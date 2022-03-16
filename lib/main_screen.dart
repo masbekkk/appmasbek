@@ -1,6 +1,7 @@
 import 'package:appmasbek/flutter_layout.dart';
 import 'package:appmasbek/main.dart';
-import 'package:appmasbek/model/tourism_place.dart';
+// import 'package:appmasbek/model/tourism_place.dart';
+import 'package:appmasbek/model/programming_modules.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatelessWidget{
@@ -8,11 +9,11 @@ class MainScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Wisata Bandung'),
+        title: const Text('Programming Course'),
       ),
       body: ListView.builder(
         itemBuilder: (context, index){
-          final TourismPlace place = data[index];
+          final ProgrammingModules place = data[index];
           return InkWell(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -28,14 +29,14 @@ class MainScreen extends StatelessWidget{
     );
   }
 
-  Widget listItem(TourismPlace place){
+  Widget listItem(ProgrammingModules place){
     return Card(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Image.asset(place.imageAsset, width: 300, height: 150)
+            child: Image.network(place.image, width: 300, height: 150)
           ),
           Expanded(
             flex: 2,
@@ -45,13 +46,14 @@ class MainScreen extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text(place.name,
+                  Text(place.materi,
                   style: const TextStyle(fontSize: 16.0)
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(place.location),
+                  const Icon(Icons.query_builder),
+                  Text(place.estimasi),
                 ],
               ),
               ),
