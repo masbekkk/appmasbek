@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   sqflite: ^2.0.2
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -84,7 +85,7 @@ flutter:
         - asset: assets/fonts/Poppins/Poppins-Medium.ttf
     - family: Monserrat
       fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
+        - asset: assets/fonts/Montserrat/static/Montserrat-BoldItalic.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

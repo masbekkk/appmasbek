@@ -1,7 +1,10 @@
+import 'package:appmasbek/provider/done_modules.dart';
 import 'package:flutter/material.dart';
 import 'package:appmasbek/flutter_layout.dart';
 import 'package:appmasbek/main_screen.dart';
-import 'package:appmasbek/model/tourism_place.dart';
+import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,21 +16,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "App Masbek",
-      theme: ThemeData(
-        primarySwatch: Colors.red,
+    return ChangeNotifierProvider(
+      create: (context) => DoneModulesProvider(),
+      child: MaterialApp(
+        title: "App Masbek",
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
+        home: const MyHomePage(title: 'Hello world by masbek'),
       ),
-      home: const MyHomePage(title: 'Hello world by masbek'),
-      // home: DetailScreen(place: place),
-      
     );
   }
 }
 
 class Sidebar extends StatelessWidget {
   // Sidebar obj = new Sidebar();
-  late TourismPlace place;
+  // late TourismPlace place;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -79,7 +83,7 @@ class Sidebar extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MainScreen()),
+                  MaterialPageRoute(builder: (context) => MainScreen()),
                 );
               },
             ),
