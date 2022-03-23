@@ -4,6 +4,7 @@ import 'package:appmasbek/main.dart';
 // import 'package:appmasbek/model/tourism_place.dart';
 import 'package:appmasbek/model/programming_modules.dart';
 import 'package:appmasbek/modules_list.dart';
+import 'package:appmasbek/modules_grid.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget{
@@ -30,7 +31,15 @@ class MainScreen extends StatefulWidget{
               icon: const Icon(Icons.done_outline))
           ],
         ),
-        body: ModulesList(checkedData: checkedData),
+        body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth <= 600) {
+            return ModulesList(checkedData: checkedData);
+          } else {
+            return ModulesGrid(checkedData: checkedData);
+          }
+        },
+      ),
         drawer: Sidebar(),
       );
     }

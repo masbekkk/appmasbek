@@ -1,3 +1,5 @@
+import 'package:flutter/src/material/ink_well.dart';
+
 class ProgrammingModules{
   String materi, estimasi, silabus, desc, image, android, ios, desktop, multiplatform;
   var gallery = [];
@@ -14,6 +16,7 @@ class ProgrammingModules{
     required this.multiplatform,
     required this.gallery
   });
+
 }
 
 var data = [

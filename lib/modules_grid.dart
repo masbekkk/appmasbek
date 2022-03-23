@@ -1,28 +1,25 @@
 import 'package:appmasbek/flutter_layout.dart';
-import 'package:appmasbek/list_item.dart';
+import 'package:appmasbek/grid_item.dart';
 import 'package:appmasbek/model/programming_modules.dart';
 import 'package:appmasbek/provider/done_modules.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ModulesList extends StatefulWidget{
+class ModulesGrid extends StatefulWidget{
   final List<ProgrammingModules> checkedData;
 
-  const ModulesList({
+  const ModulesGrid({
     Key? key,
     required this.checkedData
   }) : super(key: key);
 
   @override
   // ignore: no_logic_in_create_state
-  _ModulesListState createState() => _ModulesListState(checkedData);
-  
-  // _ModulesGridState createState() => _ModulesGridState(checkedData);
+  _ModulesGridState createState() => _ModulesGridState(checkedData);
 
 }
-
-class _ModulesListState extends State<ModulesList>{
+class _ModulesGridState extends State<ModulesGrid>{
   final List<ProgrammingModules> data = [
       ProgrammingModules(
       materi: "Memulai Pemrograman Dengan Python", 
@@ -172,41 +169,39 @@ class _ModulesListState extends State<ModulesList>{
   ];
   final List<ProgrammingModules> dataChecked;
 
-  _ModulesListState(this.dataChecked);
+  _ModulesGridState(this.dataChecked);
 
   @override
   Widget build(BuildContext context){
-    return ListView.builder(
-      itemBuilder: (context, index){
-        final ProgrammingModules place = data[index];
-        return InkWell(
-          onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context){
-              return DetailScreen(place: place);
-            }));
-          },
-          child: Consumer<DoneModulesProvider>(
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: GridView.count(
+        crossAxisCount: 4,
+        children: data.map((place) {
+          return InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DetailScreen(place: place);
+              }));
+            },
+            child: Consumer<DoneModulesProvider>(
             builder: (context, DoneModulesProvider data, widget){
-              return ListItem(
-                place: place,
-                isChecked: dataChecked.contains(place),
-                onCheckboxClick: (bool? value){
+              return GridItem(
+                place: place, 
+                isChecked: dataChecked.contains(place), 
+                onCheckboxClick:  (bool? value){
                   setState(() {
                     if(value != null){
                       value ? dataChecked.add(place) : dataChecked.remove(place);
                     }
                   });
                 },
-              );
+                );
             },
-          ),
-        );
-      },
-      itemCount: data.length,
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }
-
-
-
-// class DataList extends StatelessWidget{}
