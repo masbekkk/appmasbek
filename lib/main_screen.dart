@@ -1,10 +1,11 @@
 import 'package:appmasbek/checked_data.dart';
+import 'package:appmasbek/crud/store_programmingmodules.dart';
 import 'package:appmasbek/flutter_layout.dart';
 import 'package:appmasbek/main.dart';
 // import 'package:appmasbek/model/tourism_place.dart';
 import 'package:appmasbek/model/programming_modules.dart';
 import 'package:appmasbek/modules_list.dart';
-import 'package:appmasbek/modules_grid.dart';
+// import 'package:appmasbek/modules_grid.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget{
@@ -28,16 +29,22 @@ class MainScreen extends StatefulWidget{
                   return CheckedData(dataChecked: checkedData);
                 }));
               }, 
-              icon: const Icon(Icons.done_outline))
+              icon: const Icon(Icons.done_outline)),
+              IconButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return WriteSQLdata();
+                }));
+              }, icon: const Icon(Icons.add_circle))
           ],
         ),
         body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth <= 600) {
-            return ModulesList(checkedData: checkedData);
-          } else {
-            return ModulesGrid(checkedData: checkedData);
-          }
+          return ModulesList(checkedData: checkedData);
+          // if (constraints.maxWidth <= 600) {
+          //   return ModulesList(checkedData: checkedData);
+          // } else {
+          //   return ModulesGrid(checkedData: checkedData);
+          // }
         },
       ),
         drawer: Sidebar(),
