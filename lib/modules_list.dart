@@ -42,7 +42,7 @@ Widget _buildList(BuildContext context) {
       builder: (context, AsyncSnapshot<ProgrammingModulesResult> snapshot) {
         var state = snapshot.connectionState;
         if (state != ConnectionState.done) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else {
           if (snapshot.hasData) {
             return ListView.builder(

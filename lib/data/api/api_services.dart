@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class ApiService{
   static const String _baseUrl = 'http://';
-  static const String _ip = '192.168.0.105:8000';
+  static const String _ip = '192.168.0.102:8000';
   static const String _route = '/api/bismillah';
   // static final String _apiKey = 'e73963a645884c96bb916c3dfbceb1fe';
   // static final String _category ='bussiness';

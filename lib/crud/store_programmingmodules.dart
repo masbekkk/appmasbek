@@ -29,7 +29,7 @@ class WriteSQLdataState extends State<WriteSQLdata>{
   late bool error, sending, success;
   late String msg;
 
-  String phpurl = "http://192.168.0.105:8000/api/store";
+  String phpurl = "http://192.168.0.102:8000/api/store";
   // do not use http://localhost/ for your local
   // machine, Android emulation do not recognize localhost
   // insted use your local ip address or your live URL
@@ -103,7 +103,7 @@ class WriteSQLdataState extends State<WriteSQLdata>{
   Widget build(BuildContext context) {
      return Scaffold(
         appBar: AppBar(
-           title:Text("Write Data PHP & MySQL"),
+           title:Text("Add Programming Modules"),
            backgroundColor:Colors.red
         ), //appbar
 
@@ -126,6 +126,7 @@ class WriteSQLdataState extends State<WriteSQLdata>{
                 Container( 
                   child: TextField( 
                      controller: materictl,
+                     
                      decoration: InputDecoration(
                         labelText:"Materi:",
                         hintText:"Enter Materi",

@@ -75,23 +75,6 @@ class DetailScreen extends StatelessWidget{
                   ),
                 ]
               ),
-              // child: ListView.builder(
-              //   itemBuilder:(context, index) {
-                // return Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: [
-                //   Column(
-                //       children: <Widget>[
-                //         // for(int i =1; i <= icon.length; i++)
-                //         // Icon(icon[i]),
-                //         Text(place.fitur[index])
-                //       ]
-                //     )
-              //     ],
-              //     );
-              //   },
-              // itemCount: place.fitur.length,
-              // ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 16.0),
